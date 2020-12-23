@@ -45,7 +45,7 @@ body {
     height: 600px;
     padding: 100px;
     transition: all .3s ease;
-    background-color: #fff;
+    background-color: transparent;
 }
 .player-name {
     font-size: 40px;
@@ -99,7 +99,7 @@ body {
     font-size: 30px;
 }
 
-.winner { background-color: #f7f7f7; }
+.winner { background-color: transparent; }
 .winner .player-name { font-weight: 300; color: #42b983; }
 
 

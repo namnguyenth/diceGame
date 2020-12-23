@@ -28,15 +28,11 @@
 
 
 var Score1, Score2;
-// // var activePlayer1, activePlayer2;
-// var currentScore = 0;
-// var n;
-// var player-score1 = document.getElementById("player-score1");
-// var player-score2 = document.getElementById("player-score2");
 var FinalScore = document.getElementById("d1");
 Score1 = 0;
 Score2 = 0;
-
+var p1 = document.getElementById("pn1");
+var p2 = document.getElementById("pn2");
 
 //popup
 var md = document.getElementById("popupT");
@@ -68,10 +64,6 @@ function reset() {
 
 
 
-
-
-
-
 //ham kiem tra finalScore 
 
 // function check() {
@@ -83,7 +75,7 @@ function reset() {
 // }
 
 
-
+ var isChanle = true; //true chẵn, fale: lẻ
 //ham kiem tra
 function kiemtra(Score1, Score2) {
     if (Score1 > Score2) {
@@ -110,26 +102,27 @@ function roll() {
 
     //start 
     //player 1 start
-
-    var number1 = Math.floor(Math.random() * 6) + 1;
-    document.querySelector("#dices1").setAttribute("class", "spinner dice-" + number1);
-    document.getElementById("player1-current-score").innerHTML = number1;
-    if (number1 == 1) {
-        Score1 += 0;
-    } else if (number1 >= 2 && number1 <= 6) {
-        Score1 += number1;
-        if (Score1 >= FinalScore.value) {
-            document.getElementById("player-score1").innerHTML = "" + Score1;
-            console.log("1win");
-            kiemtra(Score1, Score2);
-        } else {
-            console.log("1 tiep tuc");
-            document.getElementById("player-score1").innerHTML = "" + Score1;
+    //neu chan le true thi thuc hien
+    if (isChanle) {
+        var number1 = Math.floor(Math.random() * 6) + 1;
+        document.querySelector("#dices1").setAttribute("class", "spinner dice-" + number1);
+        document.getElementById("player1-current-score").innerHTML = number1;
+        if (number1 == 1) {
+            Score1 += 0;
+        } else if (number1 >= 2 && number1 <= 6) {
+            Score1 += number1;
+            if (Score1 >= FinalScore.value) {
+                document.getElementById("player-score1").innerHTML = "" + Score1;
+                console.log("1win");
+                kiemtra(Score1, Score2);
+            } else {
+                console.log("1 tiep tuc");
+                document.getElementById("player-score1").innerHTML = "" + Score1;
+            }
         }
+        console.log("Diem hien tai p1 " + Score1);
     }
-    console.log("Diem hien tai p1 " + Score1);
-
-
+    else{
     //player 2 start
     var number2 = Math.floor(Math.random() * 6) + 1;
     document.querySelector("#dices2").setAttribute("class", "spinner dice-" + number2);
@@ -150,5 +143,6 @@ function roll() {
         }
     }
     console.log("Diem hien tai p2 " + Score2);
-
+    }
+    isChanle = !isChanle;
 }
